@@ -1,7 +1,10 @@
 Język:
 - Python
-
-Rafał Szczepańczyk - Frontend
+- 
+Moduły:
+Frontend - Rafał Szczepańczyk - 
+Endpoints
+Moduł ML
 
 Aplikacja Web:
 - Pozwala na wrzucenie materiału do analizy
