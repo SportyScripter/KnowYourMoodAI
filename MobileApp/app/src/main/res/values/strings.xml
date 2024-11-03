@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Mobile_KYMAI</string>
+    <string name="KYMAI">KYM_AI</string>
+    <string name="exit">Wyjdź</string>
+    <string name="start">Start</string>
+    <string name="description">Know Your Mood AI</string>
+    <string name="rtn">Powrót</string>
+    <string name="gallery">Galeria</string>
+    <string name="camera">Aparat</string>
+    <string name="select_description">Importuj film</string>
+
+</resources>
