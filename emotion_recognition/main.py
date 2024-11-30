@@ -1,24 +1,28 @@
+import os
+from keras import Sequential
+from keras.src.layers import Conv2D, Flatten, Dense, MaxPooling2D
 from data.dataset_loader import download_dataset, load_data, prepare_generators
-from model.training import create_model, train_model
-from utils.preprocess import preprocess_image
-from model.inference import predict_emotion
+
 
 def main():
     dataset_path = download_dataset()
-    train_data, test_data = load_data(dataset_path)
-    train_generator, test_generator = prepare_generators(train_data, test_data)
+    data_path = os.path.join(dataset_path, "data")
 
-    class_labels = train_generator.class_indices
-    class_labels = {v: k for k, v in class_labels.items()}
+    train_images, test_images, train_labels, test_labels = load_data(data_path)
 
-    model = create_model()
-    train_model(model, train_generator, test_generator)
+    train_generator, test_generator = prepare_generators(train_images, train_labels, test_images, test_labels)
 
-    # test na jednym obrazie
-    test_image_path = test_data.iloc[0]["image_path"]
-    image = preprocess_image(test_image_path)
-    emotion = predict_emotion(model, image, class_labels)
-    print(f"Predicted Emotion: {emotion}")
+    model = Sequential([
+        Conv2D(32, (3, 3), activation='relu', input_shape=(48, 48, 1)),
+        MaxPooling2D((2, 2)),
+        Flatten(),
+        Dense(128, activation='relu'),
+        Dense(len(set(train_labels)), activation='softmax')
+    ])
+
+    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+    model.fit(train_generator, epochs=10, validation_data=test_generator)
 
 if __name__ == "__main__":
     main()

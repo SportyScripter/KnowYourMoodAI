@@ -1,37 +1,95 @@
 import os
 import kagglehub
+from keras.src.legacy.preprocessing.image import ImageDataGenerator
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import pandas as pd
+
+
+import numpy as np
+import cv2
+
 
 def download_dataset():
+    """
+    Pobiera zbiór danych za pomocą kagglehub.
+
+    Returns:
+        str: Ścieżka do pobranych danych.
+    """
     path = kagglehub.dataset_download("sanidhyak/human-face-emotions")
     print("Path to dataset files:", path)
     return path
 
-def load_data(dataset_path, test_size=0.2):
-    data = pd.read_csv(os.path.join(dataset_path, "data.csv"))  # Załóżmy, że zbiór jest w formacie CSV
-    train_data, test_data = train_test_split(data, test_size=test_size, random_state=42)
-    return train_data, test_data
 
-def prepare_generators(train_data, test_data, img_size=(48, 48), batch_size=32):
-    train_datagen = ImageDataGenerator(rescale=1./255, rotation_range=30, zoom_range=0.2, horizontal_flip=True)
-    test_datagen = ImageDataGenerator(rescale=1./255)
+def load_data(dataset_path, test_size=0.2, img_size=(48, 48)):
+    """
+    Ładuje dane obrazów z folderów i przypisuje etykiety na podstawie nazw folderów.
 
-    train_generator = train_datagen.flow_from_dataframe(
-        train_data,
-        x_col="image_path",
-        y_col="emotion",
-        target_size=img_size,
-        batch_size=batch_size,
-        class_mode="categorical"
+    Args:
+        dataset_path (str): Ścieżka do folderu z danymi.
+        test_size (float): Proporcja danych testowych.
+        img_size (tuple): Docelowy rozmiar obrazu.
+
+    Returns:
+        tuple: (train_images, train_labels, test_images, test_labels)
+    """
+    images = []
+    labels = []
+    classes = os.listdir(dataset_path)  # Pobiera listę folderów (klas)
+
+    for label, class_name in enumerate(classes):
+        class_path = os.path.join(dataset_path, class_name)
+
+        if not os.path.isdir(class_path):
+            continue  # Pomijamy pliki, które nie są folderami
+
+        for image_name in os.listdir(class_path):
+            image_path = os.path.join(class_path, image_name)
+
+            if image_name.lower().endswith(('.jpg', '.jpeg', '.png')):
+                image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)  # Wczytanie w skali szarości
+                if image is None:
+                    continue  # Pomijamy uszkodzone obrazy
+
+                image = cv2.resize(image, img_size)  # Zmiana rozmiaru
+                images.append(image)
+                labels.append(label)  # Przypisanie etykiety
+
+    images = np.array(images, dtype='float32') / 255.0  # Normalizacja
+    labels = np.array(labels)
+
+    return train_test_split(images, labels, test_size=test_size, random_state=42)
+
+
+def prepare_generators(train_images, train_labels, test_images, test_labels, batch_size=32):
+    """
+    Tworzy generatory danych do trenowania i testowania modeli.
+
+    Args:
+        train_images (np.ndarray): Obrazy treningowe.
+        train_labels (np.ndarray): Etykiety treningowe.
+        test_images (np.ndarray): Obrazy testowe.
+        test_labels (np.ndarray): Etykiety testowe.
+        batch_size (int): Rozmiar batcha.
+
+    Returns:
+        tuple: (train_generator, test_generator)
+    """
+    train_datagen = ImageDataGenerator(rotation_range=30, zoom_range=0.2, horizontal_flip=True)
+    test_datagen = ImageDataGenerator()
+
+    # Przekształcenie obrazów i etykiet do tablic 4D wymaganych przez Keras
+    train_images = train_images[..., np.newaxis]
+    test_images = test_images[..., np.newaxis]
+
+    train_generator = train_datagen.flow(
+        train_images,
+        train_labels,
+        batch_size=batch_size
     )
-    test_generator = test_datagen.flow_from_dataframe(
-        test_data,
-        x_col="image_path",
-        y_col="emotion",
-        target_size=img_size,
-        batch_size=batch_size,
-        class_mode="categorical"
+    test_generator = test_datagen.flow(
+        test_images,
+        test_labels,
+        batch_size=batch_size
     )
+
     return train_generator, test_generator
