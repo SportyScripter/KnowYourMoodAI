@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f6b4e86-8cb4-415e-b1ab-20027ecf9f6e" name="Changes" comment="ml module: updated image recognition, training libs" />
+    <list default="true" id="6f6b4e86-8cb4-415e-b1ab-20027ecf9f6e" name="Changes" comment="x">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emotion_recognition/model/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/emotion_recognition/model/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emotion_recognition/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/emotion_recognition/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -20,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ml" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,17 +39,38 @@
   "prStates": [
     {
       "id": {
-        "id": "PR_kwDONDAegc6Dnx_4",
-        "number": 6
-      },
-      "lastSeen": 1732960867349
-    },
-    {
-      "id": {
         "id": "PR_kwDONDAegc6Dn8wo",
         "number": 7
       },
       "lastSeen": 1733771602538
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6DoDuY",
+        "number": 8
+      },
+      "lastSeen": 1733771699538
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6Dnx_4",
+        "number": 6
+      },
+      "lastSeen": 1733771721195
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6Dnxfm",
+        "number": 5
+      },
+      "lastSeen": 1733771726627
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6DmiQN",
+        "number": 4
+      },
+      "lastSeen": 1733771730737
     }
   ]
 }]]></component>
@@ -78,6 +106,7 @@
     "Python.dataset_loader.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "ml",
     "last_opened_file_path": "D:/Moje Dokumenty/Python/Szota_Dorota_Krypto_20241020",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -130,7 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732960836093</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="x">
+      <option name="closed" value="true" />
+      <created>1733771894993</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733771894993</updated>
+    </task>
+    <task id="LOCAL-00006" summary="x">
+      <option name="closed" value="true" />
+      <created>1733771912001</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733771912001</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -138,6 +183,7 @@
     <MESSAGE value="ml module added - typo correction" />
     <MESSAGE value="ml module: ML_README.txt added" />
     <MESSAGE value="ml module: updated image recognition, training libs" />
-    <option name="LAST_COMMIT_MESSAGE" value="ml module: updated image recognition, training libs" />
+    <MESSAGE value="x" />
+    <option name="LAST_COMMIT_MESSAGE" value="x" />
   </component>
 </project>
