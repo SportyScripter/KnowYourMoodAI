@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6f6b4e86-8cb4-415e-b1ab-20027ecf9f6e" name="Changes" comment="x">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emotion_recognition/model/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/emotion_recognition/model/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emotion_recognition/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/emotion_recognition/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6Dn8wo",
+        "number": 7
+      },
+      "lastSeen": 1733771602538
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6DoDuY",
+        "number": 8
+      },
+      "lastSeen": 1733771699538
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6Dnx_4",
+        "number": 6
+      },
+      "lastSeen": 1733771721195
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6Dnxfm",
+        "number": 5
+      },
+      "lastSeen": 1733771726627
+    },
+    {
+      "id": {
+        "id": "PR_kwDONDAegc6DmiQN",
+        "number": 4
+      },
+      "lastSeen": 1733771730737
+    }
+  ]
+}]]></component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SportyScripter/KnowYourMoodAI.git&quot;,
+    &quot;accountId&quot;: &quot;119f340a-4498-4f72-99d6-41d470294877&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;SportyScripter&quot;,
+    &quot;repository&quot;: &quot;KnowYourMoodAI&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2pMDIMAA1S81MoVa1fTbMQJXglL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.dataset_loader.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "ml",
+    "last_opened_file_path": "D:/Moje Dokumenty/Python/Szota_Dorota_Krypto_20241020",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6f6b4e86-8cb4-415e-b1ab-20027ecf9f6e" name="Changes" comment="" />
+      <created>1732566970227</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732566970227</updated>
+    </task>
+    <task id="LOCAL-00001" summary="ml module added">
+      <option name="closed" value="true" />
+      <created>1732954163278</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732954163278</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ml module added - typo correction">
+      <option name="closed" value="true" />
+      <created>1732954471231</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732954471231</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ml module: ML_README.txt added">
+      <option name="closed" value="true" />
+      <created>1732954720018</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732954720018</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ml module: updated image recognition, training libs">
+      <option name="closed" value="true" />
+      <created>1732960836093</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732960836093</updated>
+    </task>
+    <task id="LOCAL-00005" summary="x">
+      <option name="closed" value="true" />
+      <created>1733771894993</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733771894993</updated>
+    </task>
+    <task id="LOCAL-00006" summary="x">
+      <option name="closed" value="true" />
+      <created>1733771912001</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733771912001</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ml module added" />
+    <MESSAGE value="ml module added - typo correction" />
+    <MESSAGE value="ml module: ML_README.txt added" />
+    <MESSAGE value="ml module: updated image recognition, training libs" />
+    <MESSAGE value="x" />
+    <option name="LAST_COMMIT_MESSAGE" value="x" />
+  </component>
+</project>
