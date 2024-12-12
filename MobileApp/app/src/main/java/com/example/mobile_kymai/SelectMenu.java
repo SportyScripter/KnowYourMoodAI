@@ -15,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.nio.channels.InterruptedByTimeoutException;
+
 public class SelectMenu extends AppCompatActivity {
 
 
@@ -47,7 +49,8 @@ public class SelectMenu extends AppCompatActivity {
 
 
     public void btnReturn(View v) {
-        finish();
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
 
     }
 
