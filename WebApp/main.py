@@ -1,12 +1,13 @@
 import os
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
+from typing import Union
+from fastapi import FastAPI
 
 app = FastAPI()
 
 UPLOAD_DIR = "uploaded_images"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
-
 
 @app.post("/upload-image/")
 async def upload_image(file: UploadFile = File(...)):
@@ -15,7 +16,6 @@ async def upload_image(file: UploadFile = File(...)):
 
         with open(file_path, "wb") as f:
             f.write(await file.read())
-
         return JSONResponse(
             content={
                 "filename": file.filename,
@@ -31,3 +31,7 @@ async def upload_image(file: UploadFile = File(...)):
 @app.get("/")
 def read_root():
     return {"Hello, ": "What is your mood?"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+    return {"item_id": item_id, "q": q}
