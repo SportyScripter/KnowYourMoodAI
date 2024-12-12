@@ -1,13 +1,19 @@
 <resources>
     <string name="app_name">Mobile_KYMAI</string>
     <string name="KYMAI">KYM_AI</string>
-    <string name="exit">Wyjdź</string>
+    <string name="exit">Exit</string>
     <string name="start">Start</string>
     <string name="description">Know Your Mood AI</string>
     <string name="rtn">Powrót</string>
     <string name="gallery">Galeria</string>
     <string name="camera">Aparat</string>
     <string name="select_description">Importuj film</string>
-    <string name="send">Sprawdź swój mood :D</string>
+    <string name="send">Check your mood :D</string>
+    <string name="Login">Login</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="Register">Register</string>
+    <string name="RepeatPassword">Repeat Password</string>
+    <string name="Return">Return</string>
 
 </resources>

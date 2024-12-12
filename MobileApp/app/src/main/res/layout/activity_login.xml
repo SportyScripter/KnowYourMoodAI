@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud"
+    tools:context=".Login">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/Logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:shadowColor="#000000"
+                android:shadowDx="15"
+                android:shadowDy="10"
+                android:shadowRadius="5"
+                android:text="@string/KYMAI"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#00F9FF"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#504F4F"
+                android:textScaleX="@dimen/material_emphasis_high_type"
+                android:textSize="80sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/AppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Logo">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:shadowColor="#000000"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:text="@string/description"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#C0C0C0"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#504F4F"
+                android:textScaleX="@dimen/material_emphasis_high_type"
+                android:textSize="25sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AppName">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:shadowColor="#000000"
+                android:shadowDx="15"
+                android:shadowDy="10"
+                android:shadowRadius="5"
+                android:text="@string/Login"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#00F9FF"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#504F4F"
+                android:textScaleX="@dimen/material_emphasis_high_type"
+                android:textSize="80sp"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Login">
+
+            <EditText
+                android:id="@+id/edtTxtUsername"
+                android:layout_width="250dp"
+                android:layout_height="75dp"
+                android:ems="10"
+                android:hint="@string/Username"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#464545" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Username">
+
+            <EditText
+                android:id="@+id/edtTxtPassword"
+                android:layout_width="250dp"
+                android:layout_height="75dp"
+                android:ems="10"
+                android:hint="@string/Password"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#464545" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LayoutBtnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Password">
+
+            <Button
+                android:id="@+id/BtnLogin"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:onClick="OnClickLogin"
+                android:text="@string/Login" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LayoutBtnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LayoutBtnLogin">
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:onClick="OnClickRegister"
+                android:text="@string/Register" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LayoutBtnExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LayoutBtnRegister">
+
+            <Button
+                android:id="@+id/BtnExit"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:onClick="OnClickExit"
+                android:text="@string/exit" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
