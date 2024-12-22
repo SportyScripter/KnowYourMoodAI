@@ -4,7 +4,7 @@ from keras.src.layers import Conv2D, Flatten, Dense, MaxPooling2D
 
 from WebApp.main import app
 from data.dataset_loader import download_dataset, load_data, prepare_generators
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.responses import JSONResponse
 import numpy as np
 import cv2
@@ -41,8 +41,8 @@ async def analyze_emotion(file: UploadFile = File(...)):
 
         return JSONResponse(content={"emotion": emotion})
 
-   # except Exception as e:
-  #      raise HTTPException(status_code=400, detail=f"Błąd przetwarzania: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Błąd przetwarzania: {str(e)}")
 def main():
     dataset_path = download_dataset()
     data_path = os.path.join(dataset_path, "data")
