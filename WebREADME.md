@@ -3,13 +3,13 @@
 ## Create virtual enviorment
 To create a virtual environment, use the `venv` module that comes with Python.
 ```
-$ python -m venv .venv
+python -m venv .venv
 ```
 
 ## Activate virtual enviorment
 To activate new virtual enviorment, use following command
 ```
-$ source .venv/bin/activate
+source .venv/bin/activate
 ```
 
 ## Upgrade pip
@@ -17,7 +17,12 @@ $ source .venv/bin/activate
 python -m pip install --upgrade pip
 ```
 
+## Install packages
+```
+pip install -r requirements.txt
+```
+
 ## Run app
 ```
-fastapi dev main.py
+uvicorn main:app --reload
 ```

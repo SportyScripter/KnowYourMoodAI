@@ -1,0 +1,6 @@
+fastapi==0.103.1
+uvicorn==0.22.0
+sqlalchemy==2.0.20
+bcrypt==4.0.1
+pydantic[email]==2.3.0
+python-multipart==0.0.6
