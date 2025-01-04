@@ -7,10 +7,18 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 import bcrypt
 import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from pydantic import BaseModel, EmailStr
+from typing import Union
+import numpy as np
+import cv2
+from emotion_recognition.model.inference import predict_emotion
+
 
 app = FastAPI()
 
+MODEL_PATH = os.path.join("saved_model", "emotion_model.h5")
 UPLOAD_DIR = "uploaded_images"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
@@ -73,6 +81,7 @@ def read_root():
     return {"Hello, ": "What is your mood?"}
 
 
+
 @app.post("/upload-image/")
 async def upload_image(file: UploadFile = File(...)):
     try:
@@ -91,6 +100,37 @@ async def upload_image(file: UploadFile = File(...)):
         )
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
+
+
+@app.post("/analyze-emotion/")
+async def analyze_emotion(file: UploadFile = File(...)):
+    """
+    Endpoint for analyzing emotions from an uploaded image.
+    Args:
+        file (UploadFile): Uploaded image file.
+
+    Returns:
+        JSONResponse: Predicted emotion.
+    """
+    try:
+        contents = await file.read()
+        nparr = np.frombuffer(contents, np.uint8)
+        image = cv2.imdecode(nparr, cv2.IMREAD_GRAYSCALE)
+        if image is None:
+            raise ValueError("Invalid image format.")
+
+        # Preprocess the image (resize and normalize)
+        image = cv2.resize(image, (48, 48))  # Resize to match model input
+        image = image.astype('float32') / 255.0
+        image = np.expand_dims(image, axis=(0, -1))  # Add batch and channel dimensions
+
+        # Predict emotion
+        emotion = predict_emotion(image, MODEL_PATH)
+
+        return JSONResponse(content={"emotion": emotion})
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing image: {str(e)}")
 
 
 @app.post("/register/")
@@ -120,3 +160,4 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
             headers={"WWW-Authenticate": "Bearer"},
         )
     return {"access_token": user.username, "token_type": "bearer"}
+
