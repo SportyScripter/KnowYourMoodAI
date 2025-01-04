@@ -1,6 +1,6 @@
 # Web project setup.
-
 ## Create virtual enviorment
+Set on root project ./KnowYourMoodAI and make commands from there.
 To create a virtual environment, use the `venv` module that comes with Python.
 ```
 python -m venv .venv
@@ -19,10 +19,10 @@ python -m pip install --upgrade pip
 
 ## Install packages
 ```
-pip install -r requirements.txt
+pip install -r WebApp/requirements.txt
 ```
 
 ## Run app
 ```
-uvicorn main:app --reload
+uvicorn WebApp.main:app --reload
 ```
