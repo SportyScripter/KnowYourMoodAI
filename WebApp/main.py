@@ -7,11 +7,14 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 import bcrypt
 import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from pydantic import BaseModel, EmailStr
 from typing import Union
 import numpy as np
 import cv2
-from model.inference import predict_emotion
+from emotion_recognition.model.inference import predict_emotion
+
 
 app = FastAPI()
 
