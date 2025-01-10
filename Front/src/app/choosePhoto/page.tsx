@@ -67,6 +67,7 @@ export default function ChoosePhoto() {
 
     const handleChangePhoto = () => {
         setSelectedFile(null);
+        setEmotion(null);
     };
 
     return (
