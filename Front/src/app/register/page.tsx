@@ -24,26 +24,38 @@ export default function Register() {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e : any) => {
+        console.log("Registering");
         e.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match");
+            setError('Passwords do not match');
             return;
         }
 
-        if (!formData.name || !formData.email || !formData.password) {
-            setError("All fields are required");
-            return;
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to register: : ${response.statusText}');
+            }
+
+            const data = await response.json();
+            setSuccess(true);
+            //router.push('/login');
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError('An unknown error occurred');
+            }
         }
-
-        // Tutaj możesz dodać logikę wysyłania danych do API
-
-        setSuccess(true); // Po udanej rejestracji
-        setError(null); // Resetujemy błąd
-        // Możesz przekierować użytkownika na stronę logowania po rejestracji
-        router.push("/login");
     };
+
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-custom-bg">
@@ -55,10 +67,10 @@ export default function Register() {
 
                 {/* Komunikat o sukcesie */}
                 {success && (
-                    <p className="text-green-500 text-center mb-4">Registration successful!</p>
+                    <p className="text-green-800 text-center mb-4">Registration successful!</p>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form className="space-y-4">
                     <div>
                         <label className="block text-white" htmlFor="name">
                             Name
@@ -121,6 +133,7 @@ export default function Register() {
 
                     <button
                         type="submit"
+                        onClick={handleSubmit}
                         className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
                     >
                         Register
