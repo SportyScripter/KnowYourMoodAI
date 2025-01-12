@@ -29,10 +29,15 @@ public class Register extends AppCompatActivity {
     public void BtnRegister(View v) {
         EditText EdtPassword = findViewById(R.id.edtTxtPassword);
         EditText EdtRepeatPassword = findViewById(R.id.edtTxtRepeatPassword);
+        EditText EdtUsername = findViewById(R.id.edtTxtUsername);
+        EditText UserEmail = findViewById(R.id.edtTxtEmail);
+        String email = UserEmail.getText().toString();
+        String username = EdtUsername.getText().toString();
         String password = EdtPassword.getText().toString();
         String repeatPassword = EdtRepeatPassword.getText().toString();
         if (password.equals(repeatPassword)) {
             Toast.makeText(this, "Pomyślnie zarejestrowano", Toast.LENGTH_SHORT).show();
+            User user = new User(username,password,email);
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
         } else {

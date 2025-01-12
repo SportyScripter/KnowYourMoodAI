@@ -26,3 +26,13 @@ pip install -r WebApp/requirements.txt
 ```
 uvicorn WebApp.main:app --reload
 ```
+## Run local server for Android device access (same network)
+```
+uvicorn WebApp.main:app --host 0.0.0.0 --port 8000
+```
+
+## After starting the server, find your device's IPv4 address enter in cmd "ipconfig" and use it on Android: 
+
+```
+Example: 192.168.1.100:8000
+```

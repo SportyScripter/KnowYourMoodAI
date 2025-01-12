@@ -1,6 +1,7 @@
 package com.example.mobile_kymai;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +16,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.nio.channels.InterruptedByTimeoutException;
-
 public class SelectMenu extends AppCompatActivity {
-
+    private Uri myUri;
 
     private static final Bundle CAMERA_PIC_REQUEST = null;
 
@@ -34,12 +33,12 @@ public class SelectMenu extends AppCompatActivity {
             return insets;
         });
     }
+
     ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
             registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
-                // Callback is invoked after the user selects a media item or closes the
-                // photo picker.
                 if (uri != null) {
-                    Log.d("PhotoPicker", "Selected URI: " + uri);
+                    myUri = uri;
+                    Log.d("PhotoPicker", "Selected URI: " + myUri);
                     ImageView img = findViewById(R.id.imageView);
                     img.setImageURI(uri);
                 } else {
@@ -49,7 +48,7 @@ public class SelectMenu extends AppCompatActivity {
 
 
     public void btnReturn(View v) {
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
@@ -64,7 +63,9 @@ public class SelectMenu extends AppCompatActivity {
                 .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
                 .build());
     }
-    public void btnSendImg(ImageView img){
-        //TODO Dokonczyc logikę pobierania obrazu i wysyłania;
-        }
+
+    public void btnSendImg(View view) {
     }
+
+}
+

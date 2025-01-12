@@ -12,6 +12,7 @@
     <string name="Login">Login</string>
     <string name="Username">Username</string>
     <string name="Password">Password</string>
+    <string name="Email">E-mail</string>
     <string name="Register">Register</string>
     <string name="RepeatPassword">Repeat Password</string>
     <string name="Return">Return</string>
