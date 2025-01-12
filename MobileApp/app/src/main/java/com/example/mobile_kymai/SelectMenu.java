@@ -1,11 +1,13 @@
 package com.example.mobile_kymai;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -16,9 +18,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONObject;
+
+import java.io.InputStream;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class SelectMenu extends AppCompatActivity {
     private Uri myUri;
-
+    private String mood;
     private static final Bundle CAMERA_PIC_REQUEST = null;
 
     @Override
@@ -65,6 +78,64 @@ public class SelectMenu extends AppCompatActivity {
     }
 
     public void btnSendImg(View view) {
+        new Thread(() -> {
+            try {
+                // Przekształcenie Uri w plik lub InputStream
+                ContentResolver contentResolver = getContentResolver();
+                InputStream inputStream = contentResolver.openInputStream(myUri);
+
+                // Konwersja InputStream na RequestBody
+                byte[] buffer = new byte[inputStream.available()];
+                inputStream.read(buffer);
+                RequestBody fileBody = RequestBody.create(
+                        buffer,
+                        MediaType.parse("image/jpeg") // Typ MIME pliku
+                );
+
+                // Budowanie części multipart
+                MultipartBody.Part filePart = MultipartBody.Part.createFormData(
+                        "file",   // Klucz pola zgodny z FastAPI
+                        "photo.jpg",  // Nazwa pliku
+                        fileBody
+                );
+
+                // Konfiguracja klienta HTTP
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("http://192.168.1.111:8000/analyze-emotion/") // Zamień na odpowiedni adres URL
+                        .post(new MultipartBody.Builder()
+                                .setType(MultipartBody.FORM)
+                                .addPart(filePart)
+                                .build())
+                        .build();
+
+                // Wysłanie żądania i obsługa odpowiedzi
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    String responseBody = response.body().string();
+                    JSONObject jsonResponse = new JSONObject(responseBody);
+                    Intent intent = new Intent(this, mood_recognition.class);
+                    mood = jsonResponse.getString("emotion").toUpperCase();
+                    runOnUiThread(() -> {
+                        Toast.makeText(getApplicationContext(), "Odpowiedź: " + mood, Toast.LENGTH_LONG).show();
+                        Log.d("SendImage","Odpowiedź: "+mood);
+                    });
+                    intent.putExtra("EXTRA_MOOD",mood);
+                    startActivity(intent);
+                } else {
+                    runOnUiThread(() -> {
+                        Toast.makeText(getApplicationContext(), "Błąd: " + response.code(), Toast.LENGTH_LONG).show();
+                        Log.d("SendImage","Odpowiedź: "+response.code());
+                    });
+                }
+
+            } catch (Exception e) {
+                runOnUiThread(() -> {
+                    Toast.makeText(getApplicationContext(), "Wystąpił błąd: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.d("SendImage","Odpowiedź: "+e.getMessage());
+                });
+            }
+        }).start();
     }
 
 }

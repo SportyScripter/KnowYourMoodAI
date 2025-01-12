@@ -50,7 +50,7 @@ public class Register extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void BtnExit(View v) {
+    public void btnExit(View v) {
         Toast.makeText(this, "Aplikacja została zamknięta", Toast.LENGTH_SHORT).show();
         finishAffinity();
         System.exit(0);

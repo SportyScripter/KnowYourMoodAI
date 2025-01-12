@@ -194,7 +194,7 @@
                 android:id="@+id/BtnExit"
                 android:layout_width="150dp"
                 android:layout_height="75dp"
-                android:onClick="OnClickExit"
+                android:onClick="btnExit"
                 android:text="@string/exit" />
         </LinearLayout>
 
