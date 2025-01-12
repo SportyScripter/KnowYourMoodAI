@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function Register() {
     const [formData, setFormData] = useState({
-        name: "",
+        username: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -24,8 +24,7 @@ export default function Register() {
         }));
     };
 
-    const handleSubmit = async (e : any) => {
-        console.log("Registering");
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
@@ -34,10 +33,10 @@ export default function Register() {
         }
 
         try {
-            const response = await fetch('/register', {
+            const response = await fetch('http://0.0.0.0:8000/register/', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `username=${formData.username}&password=${formData.password}&email=${formData.email}`,
             });
 
             if (!response.ok) {
@@ -72,14 +71,14 @@ export default function Register() {
 
                 <form className="space-y-4">
                     <div>
-                        <label className="block text-white" htmlFor="name">
-                            Name
+                        <label className="block text-white" htmlFor="username">
+                            Username
                         </label>
                         <input
-                            id="name"
-                            name="name"
+                            id="username"
+                            name="username"
                             type="text"
-                            value={formData.name}
+                            value={formData.username}
                             onChange={handleInputChange}
                             className="w-full p-2 rounded-lg border-2 border-neutral-400 bg-neutral-300 text-black"
                             required
@@ -132,7 +131,7 @@ export default function Register() {
                     </div>
 
                     <button
-                        type="submit"
+
                         onClick={handleSubmit}
                         className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
                     >

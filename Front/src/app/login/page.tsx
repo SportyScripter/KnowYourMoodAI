@@ -22,14 +22,14 @@ export default function Login() {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('/login', {
+            const response = await fetch('http://0.0.0.0:8000/login/', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `username=${formData.email}&password=${formData.password}`,
             });
 
             if (!response.ok) {
@@ -62,7 +62,7 @@ export default function Login() {
                     <p className="text-green-500 text-center mb-4">Login successful!</p>
                 )}
 
-                <form  className="space-y-4">
+                <form className="space-y-4">
                     <div>
                         <label className="block text-white" htmlFor="email">
                             Email
@@ -94,7 +94,6 @@ export default function Login() {
                     </div>
 
                     <button
-                        type="submit"
                         onClick={handleSubmit}
                         className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
                     >
