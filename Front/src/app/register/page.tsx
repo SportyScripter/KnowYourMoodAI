@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { loadEnvConfig } from '@next/env'
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ export default function Register() {
         }
 
         try {
-            const response = await fetch('http://0.0.0.0:8000/register/', {
+            const response = await fetch('{process.env.NEXT_PUBLIC_API_URL}/login/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `username=${formData.username}&password=${formData.password}&email=${formData.email}`,
@@ -45,7 +46,7 @@ export default function Register() {
 
             const data = await response.json();
             setSuccess(true);
-            //router.push('/login');
+            router.push('/login');
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message);
@@ -54,7 +55,6 @@ export default function Register() {
             }
         }
     };
-
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-custom-bg">
