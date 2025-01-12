@@ -297,7 +297,9 @@ struct ImageUploadView: View {
 
                     if viewModel.isLoading {
                         ProgressView()
-                    } else {
+                    }
+
+                    if !viewModel.isLoading && viewModel.analysisResult == nil {
                         Button("Analyze Image") {
                             Task {
                                 await viewModel.uploadImage()
@@ -307,9 +309,16 @@ struct ImageUploadView: View {
                     }
 
                     if let result = viewModel.analysisResult {
-                        Text(result)
+                        Text("Recognized emotion: \(result)")
                             .padding()
                     }
+
+                    Button("Reset") {
+                        viewModel.selectedImage = nil
+                        viewModel.analysisResult = nil
+                    }
+                    .buttonStyle(.bordered)
+                    .padding()
 
                     if let error = viewModel.errorMessage {
                         Text(error)
