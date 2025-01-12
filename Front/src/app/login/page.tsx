@@ -22,21 +22,32 @@ export default function Login() {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        if (!formData.email || !formData.password) {
-            setError("Both email and password are required");
-            return;
+        try {
+            const response = await fetch('http://0.0.0.0:8000/login/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `username=${formData.email}&password=${formData.password}`,
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to login');
+            }
+
+            const data = await response.json();
+            setSuccess(true);
+            router.push('/');
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError('An unknown error occurred');
+            }
         }
-
-        // Tutaj możesz dodać logikę logowania (np. wysyłanie danych na serwer)
-
-        setSuccess(true); // Po udanym logowaniu
-        setError(null); // Resetujemy błąd
-        // Możesz przekierować użytkownika na stronę główną po zalogowaniu
-        router.push("/");
     };
+
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-custom-bg">
@@ -51,7 +62,7 @@ export default function Login() {
                     <p className="text-green-500 text-center mb-4">Login successful!</p>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form className="space-y-4">
                     <div>
                         <label className="block text-white" htmlFor="email">
                             Email
@@ -83,7 +94,7 @@ export default function Login() {
                     </div>
 
                     <button
-                        type="submit"
+                        onClick={handleSubmit}
                         className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
                     >
                         Log In
