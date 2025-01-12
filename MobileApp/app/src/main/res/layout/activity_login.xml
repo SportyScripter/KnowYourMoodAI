@@ -74,7 +74,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Login"
+            android:id="@+id/Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -111,7 +111,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Login">
+            app:layout_constraintTop_toBottomOf="@+id/Register">
 
             <EditText
                 android:id="@+id/edtTxtUsername"
@@ -194,7 +194,7 @@
                 android:id="@+id/BtnExit"
                 android:layout_width="150dp"
                 android:layout_height="75dp"
-                android:onClick="OnClickExit"
+                android:onClick="btnExit"
                 android:text="@string/exit" />
         </LinearLayout>
 

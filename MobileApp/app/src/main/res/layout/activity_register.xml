@@ -18,7 +18,7 @@
             android:id="@+id/Logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Login"
+            android:id="@+id/Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -105,13 +105,34 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/LayoutEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Register">
+
+            <EditText
+                android:id="@+id/edtTxtEmail"
+                android:layout_width="250dp"
+                android:layout_height="75dp"
+                android:ems="10"
+                android:hint="@string/Email"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#464545"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/Username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Login">
+            app:layout_constraintTop_toBottomOf="@+id/LayoutEmail">
 
             <EditText
                 android:id="@+id/edtTxtUsername"
@@ -215,7 +236,7 @@
                 android:id="@+id/BtnExit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="BtnExit"
+                android:onClick="btnExit"
                 android:text="@string/exit" />
         </LinearLayout>
 
