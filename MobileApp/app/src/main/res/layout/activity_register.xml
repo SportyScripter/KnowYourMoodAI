@@ -120,7 +120,9 @@
                 android:ems="10"
                 android:hint="@string/Email"
                 android:inputType="textEmailAddress"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#464545"/>
         </LinearLayout>
 
         <LinearLayout

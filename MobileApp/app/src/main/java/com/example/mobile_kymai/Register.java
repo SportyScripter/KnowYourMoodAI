@@ -12,6 +12,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.IOException;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class Register extends AppCompatActivity {
 
     @Override
@@ -37,9 +45,32 @@ public class Register extends AppCompatActivity {
         String repeatPassword = EdtRepeatPassword.getText().toString();
         if (password.equals(repeatPassword)) {
             Toast.makeText(this, "Pomyślnie zarejestrowano", Toast.LENGTH_SHORT).show();
-            User user = new User(username,password,email);
-            Intent intent = new Intent(this, Login.class);
-            startActivity(intent);
+            OkHttpClient client = new OkHttpClient();
+            RequestBody formBody = new FormBody.Builder().add("username", username).add("email", email).add("password", password).build();
+            Request request = new Request.Builder().url("http://192.168.1.111:8000/register/").post(formBody).build();
+            new Thread(()->{
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (response.isSuccessful()){
+                        String responseBody = response.body().toString();
+                        runOnUiThread(()->{
+                            Toast.makeText(getApplicationContext(), "Rejestracja udana!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(this, Login.class);
+                            startActivity(intent);
+                        });
+
+                    }else{
+                        String errorBody = response.body().toString();
+                        runOnUiThread(()->{
+                            Toast.makeText(getApplicationContext(), "Błąd rejestracji: " + errorBody, Toast.LENGTH_SHORT).show();
+                        });
+                    }
+                } catch (Exception e) {
+                    runOnUiThread(()->{
+                        Toast.makeText(getApplicationContext(), "Wystąpił błąd: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }).start();
         } else {
             Toast.makeText(this, "Dane są nieprawidłowe", Toast.LENGTH_SHORT).show();
         }
