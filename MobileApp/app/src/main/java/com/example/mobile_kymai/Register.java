@@ -12,8 +12,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.io.IOException;
-
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -46,28 +44,32 @@ public class Register extends AppCompatActivity {
         if (password.equals(repeatPassword)) {
             Toast.makeText(this, "Pomyślnie zarejestrowano", Toast.LENGTH_SHORT).show();
             OkHttpClient client = new OkHttpClient();
-            RequestBody formBody = new FormBody.Builder().add("username", username).add("email", email).add("password", password).build();
-            Request request = new Request.Builder().url("http://192.168.1.111:8000/register/").post(formBody).build();
-            new Thread(()->{
+            RequestBody formBody = new FormBody.Builder()
+                    .add("username", username)
+                    .add("email", email)
+                    .add("password", password)
+                    .build();
+            Request request = new Request.Builder().url(ApiConfig.BASE_URL + "/register/").post(formBody).build();
+            new Thread(() -> {
                 try {
                     Response response = client.newCall(request).execute();
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         String responseBody = response.body().toString();
-                        runOnUiThread(()->{
+                        runOnUiThread(() -> {
                             Toast.makeText(getApplicationContext(), "Rejestracja udana!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(this, Login.class);
                             startActivity(intent);
                         });
 
-                    }else{
+                    } else {
                         String errorBody = response.body().toString();
-                        runOnUiThread(()->{
+                        runOnUiThread(() -> {
                             Toast.makeText(getApplicationContext(), "Błąd rejestracji: " + errorBody, Toast.LENGTH_SHORT).show();
                         });
                     }
                 } catch (Exception e) {
-                    runOnUiThread(()->{
-                        Toast.makeText(getApplicationContext(), "Wystąpił błąd: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    runOnUiThread(() -> {
+                        Toast.makeText(getApplicationContext(), "Wystąpił błąd: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
                 }
             }).start();

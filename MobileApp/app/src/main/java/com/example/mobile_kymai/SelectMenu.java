@@ -102,7 +102,7 @@ public class SelectMenu extends AppCompatActivity {
                 // Konfiguracja klienta HTTP
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
-                        .url("http://192.168.1.111:8000/analyze-emotion/") // Zamień na odpowiedni adres URL
+                        .url(ApiConfig.BASE_URL+"/analyze-emotion/") // Zamień na odpowiedni adres URL
                         .post(new MultipartBody.Builder()
                                 .setType(MultipartBody.FORM)
                                 .addPart(filePart)
