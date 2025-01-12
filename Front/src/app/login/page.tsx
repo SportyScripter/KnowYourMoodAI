@@ -26,7 +26,7 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://0.0.0.0:8000/login/', {
+            const response = await fetch('{process.env.NEXT_PUBLIC_API_URL}/login/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `username=${formData.email}&password=${formData.password}`,
@@ -37,7 +37,11 @@ export default function Login() {
             }
 
             const data = await response.json();
+            sessionStorage.setItem("authToken", data.token);
+            sessionStorage.setItem("username", data.username);
+            window.dispatchEvent(new Event("storageUpdate"));
             setSuccess(true);
+
             router.push('/');
         } catch (error) {
             if (error instanceof Error) {
