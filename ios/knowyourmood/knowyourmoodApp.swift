@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// App Entry Point
 @main
-struct knowyourmoodApp: App {
+struct KnowYourMoodApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }

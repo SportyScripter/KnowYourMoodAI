@@ -29,9 +29,22 @@
 		C788BB682CDF7D730053EB29 /* knowyourmoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = knowyourmoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C71465082D33C8FE000CE2B6 /* Exceptions for "knowyourmood" folder in "knowyourmood" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C788BB4D2CDF7D720053EB29 /* knowyourmood */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C788BB502CDF7D720053EB29 /* knowyourmood */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C71465082D33C8FE000CE2B6 /* Exceptions for "knowyourmood" folder in "knowyourmood" target */,
+			);
 			path = knowyourmood;
 			sourceTree = "<group>";
 		};
@@ -381,6 +394,7 @@
 				DEVELOPMENT_TEAM = VQ4WZPB33H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = knowyourmood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -410,6 +424,7 @@
 				DEVELOPMENT_TEAM = VQ4WZPB33H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = knowyourmood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

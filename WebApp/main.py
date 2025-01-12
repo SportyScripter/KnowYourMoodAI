@@ -150,6 +150,7 @@ def register(
 
 @app.post("/login/")
 def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    print("form_data", form_data)
     user = get_user_by_username_or_email(db, form_data.username)
     if not user or not verify_password(form_data.password, user.hashed_password):
         raise HTTPException(
