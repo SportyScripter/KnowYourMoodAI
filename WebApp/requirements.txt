@@ -6,6 +6,7 @@ pydantic[email]==2.3.0
 python-multipart==0.0.6
 tensorflow
 numpy
-opencv-python
-DeepFace
 tf-keras
+deepface
+opencv-python
+
