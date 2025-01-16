@@ -34,7 +34,7 @@ export default function Register() {
         }
 
         try {
-            const response = await fetch('{process.env.NEXT_PUBLIC_API_URL}/login/', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `username=${formData.username}&password=${formData.password}&email=${formData.email}`,
@@ -46,7 +46,7 @@ export default function Register() {
 
             const data = await response.json();
             setSuccess(true);
-            router.push('/login');
+            router.push('/');
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message);
